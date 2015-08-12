@@ -7,14 +7,16 @@ var ReactTransitionGroup = React.addons.TransitionGroup;
 require('normalize.css');
 require('../styles/main.css');
 
-var imageURL = require('../images/yeoman.png');
+var Router = require('react-router');
 
 var YtrackApp = React.createClass({
   render: function() {
+  	console.debug(Router.RouteHandler);
     return (
       <div className="main">
         <ReactTransitionGroup transitionName="fade">
-          <img src={imageURL} />
+        <span>hello</span>
+      	<Router.RouteHandler/>
         </ReactTransitionGroup>
       </div>
     );
