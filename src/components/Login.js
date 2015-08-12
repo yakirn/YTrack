@@ -11,6 +11,9 @@ export default class Login extends React.Component{
 	constructor (props) {
 		super(props);
     	//this.render = this.render.bind(this);
+      // this.componentDidMount = this.componentDidMount.bind(this);
+      // this.componentWillUnmount = this.componentWillUnmount.bind(this);
+      this.state = {foo: 'bar'};
   	}
 
 	onUserChange (user) {
@@ -19,7 +22,7 @@ export default class Login extends React.Component{
         });
     }
     componentDidMount () {
-        this.unsubscribe = statusStore.listen(this.onUserChange);
+        this.unsubscribe = userStore.listen(this.onUserChange);
     }
     componentWillUnmount () {
         this.unsubscribe();
@@ -35,11 +38,12 @@ export default class Login extends React.Component{
     }
 
   render () {
-	//let content = userStore.user ? this.renderGreeting() : this.renderLoginButton();
+	let content = userStore.user ? this.renderGreeting() : this.renderLoginButton();
 
+  	console.debug(this.state);
     return (
         <div className="Login">
-          content
+          {content}
         </div>
       );
   }

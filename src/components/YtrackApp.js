@@ -11,11 +11,10 @@ var Router = require('react-router');
 
 var YtrackApp = React.createClass({
   render: function() {
-  	console.debug(Router.RouteHandler);
+  	console.log('YtrackApp');
     return (
       <div className="main">
         <ReactTransitionGroup transitionName="fade">
-        <span>hello</span>
       	<Router.RouteHandler/>
         </ReactTransitionGroup>
       </div>
