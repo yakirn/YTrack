@@ -11,7 +11,6 @@ var Router = require('react-router');
 
 var YtrackApp = React.createClass({
   render: function() {
-  	console.log('YtrackApp');
     return (
       <div className="main">
         <ReactTransitionGroup transitionName="fade">

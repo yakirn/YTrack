@@ -34,18 +34,20 @@ module.exports = {
       'mixins': __dirname + '/src/mixins',
       'components': __dirname + '/src/components/',
       'stores': __dirname + '/src/stores/',
+      'bower': __dirname + '/bower_components/',
+      'classes': __dirname + '/src/classes/',
       'actions': __dirname + '/src/actions/'
     }
   },
   module: {
     preLoaders: [{
       test: /\.(js|jsx)$/,
-      exclude: /node_modules/,
+      exclude: /(node_modules|bower_components)/,
       loader: 'eslint-loader'
     }],
     loaders: [{
       test: /\.(js|jsx)$/,
-      exclude: /node_modules/,
+      exclude: /(node_modules|bower_components)/,
       loader: 'react-hot!babel-loader'
     }, {
       test: /\.scss/,

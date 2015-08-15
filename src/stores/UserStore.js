@@ -5,10 +5,12 @@ var Actions = require('actions/UserActionCreators');
 
 
 var UserStore = Reflux.createStore({
+	user: {},
   listenables: Actions,
 
-  login () {
-
+  login (token) {
+  	this.user.token = token;
+  	this.trigger(this.user);
   },
 
   logout () {
