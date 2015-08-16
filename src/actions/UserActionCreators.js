@@ -3,7 +3,7 @@
 var Reflux = require('reflux');
 
 var UserActionCreators = Reflux.createActions([
-	'login', 'logout'
+	'token', 'login', 'logout'
 ]);
 
 
