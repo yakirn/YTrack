@@ -15,6 +15,7 @@ describe('Atest', () => {
     });
 
     it('should have its component name as default className', () => {
+    	// expect('Atest').toBe('Atest');
         expect(AtestComponent._store.props.className).toBe('Atest');
     });
 });

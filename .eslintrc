@@ -13,10 +13,10 @@
   },
   "rules": {
     "quotes": [ 1, "single" ],
-    "no-undef": false,
-    "global-strict": false,
+    "no-undef": 0,
+    "global-strict": 0,
     "no-extra-semi": 1,
-    "no-underscore-dangle": false,
+    "no-underscore-dangle": 0,
     "no-mixed-spaces-and-tabs": 0,
     "no-console":0,
     "no-trailing-spaces": 1,

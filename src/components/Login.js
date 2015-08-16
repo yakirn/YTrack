@@ -15,8 +15,6 @@ export default class Login extends React.Component{
       this.componentDidMount = this.componentDidMount.bind(this);
       this.componentWillUnmount = this.componentWillUnmount.bind(this);
       this.onUserChange = this.onUserChange.bind(this);
-      this.onLoginClick = this.onLoginClick.bind(this);
-      // this.state = {foo: 'bar'};
       this.state = { user: userStore.user };
   	}
 
@@ -50,9 +48,6 @@ export default class Login extends React.Component{
     renderGreeting () {
       return (<p>Welcom {this.state.user.profile.name}</p>);
     }
-    renderGettingProfile () {
-		  return (<p>Welcom {this.state.user.token.access_token}</p>);
-    }
     renderLoginButton () {
 		  return (<button type="button" onClick={this.onLoginClick} >Login</button>);
     }
@@ -61,8 +56,6 @@ export default class Login extends React.Component{
     let content;
     if(this.state.user.profile)
       content = this.renderGreeting();
-    //else if (this.state.user.token)
-      //content = this.renderGettingProfile();
     else
       content = this.renderLoginButton();
     return (

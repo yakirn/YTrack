@@ -1,5 +1,8 @@
 'use strict';
 
+// import UserStore from 'stores/UserStore.js';
+//var    store = require('stores/UserStore.js');
+
 describe('UserStore', () => {
   let store;
 
