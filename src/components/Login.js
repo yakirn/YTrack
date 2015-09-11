@@ -2,32 +2,36 @@
 
 import Api from 'classes/api';
 var React = require('react/addons');
+var Router = require('react-router');
 
 var UserActions = require('actions/UserActionCreators');
 var userStore = require('stores/UserStore');
 
 require('styles/Login.scss');
 
-export default class Login extends React.Component{
-	constructor (props) {
-		  super(props);
-    	this.render = this.render.bind(this);
-      this.componentDidMount = this.componentDidMount.bind(this);
-      this.componentWillUnmount = this.componentWillUnmount.bind(this);
-      this.onUserChange = this.onUserChange.bind(this);
-      this.state = { user: userStore.user };
-  	}
+var Login  = React.createClass({
 
-    onUserChange (user) {
+  mixins: [ Router.State ],
+
+	getInitialState: function () {
+		  // super(props);
+    	// this.render = this.render.bind(this);
+      // this.componentDidMount = this.componentDidMount.bind(this);
+      // this.componentWillUnmount = this.componentWillUnmount.bind(this);
+      // this.onUserChange = this.onUserChange.bind(this);
+      return { user: userStore.user };
+  	},
+
+    onUserChange: function (user) {
         this.setState({
             user: user
         });
-    }
-    componentDidMount () {
+    },
+    componentDidMount: function () {
       this.unsubscribe = userStore.listen(this.onUserChange);
-
-      if(this.props.query.code) { 
-        Api.getToken(this.props.query.code)
+      let code = this.getQuery().code;
+      if(code) { 
+        Api.getToken(code)
         .then( tokenData => {
           tokenData = JSON.parse(tokenData);
           UserActions.token(tokenData);
@@ -38,21 +42,21 @@ export default class Login extends React.Component{
             window.location.replace('/');
           });
       }
-    }
-    componentWillUnmount () {
+    },
+    componentWillUnmount: function () {
       this.unsubscribe();
-    }
-    onLoginClick () {
+    },
+    onLoginClick: function () {
       	Api.authorize();
-    }
-    renderGreeting () {
+    },
+    renderGreeting: function () {
       return (<span>Welcom {this.state.user.profile.name}</span>);
-    }
-    renderLoginButton () {
+    },
+    renderLoginButton: function () {
 		  return (<button type="button" onClick={this.onLoginClick} >Login</button>);
-    }
+    },
 
-  render () {
+  render: function () {
     let content;
     if(this.state.user.profile)
       content = this.renderGreeting();
@@ -64,4 +68,6 @@ export default class Login extends React.Component{
         </div>
       );
   }
-}
+});
+
+module.exports = Login;

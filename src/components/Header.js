@@ -13,7 +13,7 @@ var Header = React.createClass({
     return (
         <div className="Header">
         	<span className="headerText">YTrack</span>
-          <Login />
+          <Login/>
         </div>
       );
   }
