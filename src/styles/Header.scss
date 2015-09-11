@@ -1,0 +1,23 @@
+@import 'globals';
+
+%header-comp{
+	display: inline-block;
+	vertical-align: middle;
+}
+.Header {
+	position:fixed;
+	top: 0;
+	width: 100%;
+	height: $header-height;
+  	background-color: LightBlue;
+  	text-align: center;
+
+  	.headerText{
+  		@extend %header-comp;
+  		line-height: $header-height;
+  	}
+  .Login {
+  	@extend %header-comp;
+  	float: right;
+  }
+}

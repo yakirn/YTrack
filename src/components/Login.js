@@ -46,7 +46,7 @@ export default class Login extends React.Component{
       	Api.authorize();
     }
     renderGreeting () {
-      return (<p>Welcom {this.state.user.profile.name}</p>);
+      return (<span>Welcom {this.state.user.profile.name}</span>);
     }
     renderLoginButton () {
 		  return (<button type="button" onClick={this.onLoginClick} >Login</button>);
