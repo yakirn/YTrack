@@ -1,6 +1,8 @@
 'use strict';
 
 var React = require('react/addons');
+var Search = require('./Search');
+var Results = require('./Results').Results;
 
 //var Actions = require('actions/xxx')
 
@@ -11,7 +13,9 @@ var Index = React.createClass({
   render: function () {
     return (
         <div className="Index">
-          <p>Content for Index</p>
+          <h1>Find movies and shows</h1>
+          <Search/>
+          <Results/>
         </div>
       );
   }

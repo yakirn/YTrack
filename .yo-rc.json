@@ -1,6 +1,6 @@
 {
   "generator-react-webpack": {
-    "app-name": "ytrack",
+    "app-name": "search",
     "architecture": "reflux",
     "styles-language": "scss",
     "component-suffix": "js"

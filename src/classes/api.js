@@ -11,6 +11,19 @@ const SERVER_ENDPOINT = YTRAK_ENDPOINT + "api/";
 
 //var userStore = require('stores/UserStore');
 
+function buildApiRequest(url, data = {}) {
+	return {
+			    dataType: "json",
+			    contentType: "application/json",
+			    beforeSend: function(request) {
+			        request.setRequestHeader("trakt-api-version", '2');
+			        request.setRequestHeader("trakt-api-key", CLIENT_ID);
+			    },
+			    url: TRAK_ENDPOINT + url,
+			    data
+			};
+}
+
 export default class Api {
 
 	static authorize () {
@@ -35,5 +48,13 @@ export default class Api {
 				jqXHR.setRequestHeader('trakt-api-key', CLIENT_ID);
 			}
 		});
+	}
+
+	static getPopular (){
+		return $.ajax(buildApiRequest("movies/popular"));
+	}
+
+	static search (data){
+		return $.ajax(buildApiRequest("search", data));
 	}
 }

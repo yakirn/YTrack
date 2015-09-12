@@ -13,7 +13,7 @@ var Login  = React.createClass({
 
   mixins: [ Router.State ],
 
-	getInitialState: function () {
+	getInitialState () {
 		  // super(props);
     	// this.render = this.render.bind(this);
       // this.componentDidMount = this.componentDidMount.bind(this);
@@ -22,12 +22,12 @@ var Login  = React.createClass({
       return { user: userStore.user };
   	},
 
-    onUserChange: function (user) {
+    onUserChange (user) {
         this.setState({
             user: user
         });
     },
-    componentDidMount: function () {
+    componentDidMount () {
       this.unsubscribe = userStore.listen(this.onUserChange);
       let code = this.getQuery().code;
       if(code) { 
@@ -43,20 +43,20 @@ var Login  = React.createClass({
           });
       }
     },
-    componentWillUnmount: function () {
+    componentWillUnmount () {
       this.unsubscribe();
     },
-    onLoginClick: function () {
+    onLoginClick () {
       	Api.authorize();
     },
-    renderGreeting: function () {
+    renderGreeting () {
       return (<span>Welcom {this.state.user.profile.name}</span>);
     },
-    renderLoginButton: function () {
+    renderLoginButton () {
 		  return (<button type="button" onClick={this.onLoginClick} >Login</button>);
     },
 
-  render: function () {
+  render () {
     let content;
     if(this.state.user.profile)
       content = this.renderGreeting();
