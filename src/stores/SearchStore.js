@@ -2,7 +2,7 @@
 
 var Reflux = require('reflux');
 var Actions = require('actions/SearchActionCreators');
-import Api from 'classes/api';
+import Api from 'sources/api';
 
 
 var SearchStore = Reflux.createStore({

@@ -1,7 +1,7 @@
 'use strict';
 
-import Api from 'classes/api';
-var React = require('react/addons');
+import Api from 'sources/api';
+import React from 'react';
 var Router = require('react-router');
 
 var UserActions = require('actions/UserActionCreators');

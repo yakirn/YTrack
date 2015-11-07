@@ -3,6 +3,8 @@
     "app-name": "search",
     "architecture": "reflux",
     "styles-language": "scss",
-    "component-suffix": "js"
+    "component-suffix": "js",
+    "appName": "ytrack",
+    "style": "scss"
   }
 }

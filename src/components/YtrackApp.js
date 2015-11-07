@@ -1,7 +1,7 @@
 'use strict';
 
-var React = require('react/addons');
-var ReactTransitionGroup = React.addons.TransitionGroup;
+import React from 'react';
+import ReactTransitionGroup from 'react-addons-transition-group';
 
 // CSS
 require('normalize.css');

@@ -1,7 +1,8 @@
 'use strict';
 
 var YtrackApp = require('./YtrackApp');
-var React = require('react');
+import React from 'react';
+import ReactDOM from 'react-dom';
 var Router = require('react-router');
 var Route = Router.Route;
 var DefaultRoute = Router.DefaultRoute;
@@ -19,5 +20,5 @@ var Routes = (
 );
 
 Router.run(Routes, Router.HistoryLocation, function (Handler) {
-  React.render(<Handler/>, content);
+  ReactDOM.render(<Handler/>, content);
 });

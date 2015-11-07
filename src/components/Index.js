@@ -1,6 +1,6 @@
 'use strict';
 
-var React = require('react/addons');
+import React from 'react';
 var Search = require('./Search');
 var Results = require('./Results').Results;
 
