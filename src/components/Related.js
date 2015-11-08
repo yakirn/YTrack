@@ -4,18 +4,17 @@ import React from 'react';
 
 //var Actions = require('actions/xxx')
 
-require('styles/Atest.scss');
+require('styles/Related.scss');
 
-var Atest = React.createClass({
+export default class Related extends React.Component {
 
-  render: function () {
+  render () {
   	console.log('Atest');
     return (
         <div className="Atest">
-          <p>Content for Atest</p>
+          <p>Content for Related</p>
         </div>
       );
   }
-});
+}
 
-module.exports = Atest;

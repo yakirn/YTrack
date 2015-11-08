@@ -9,12 +9,14 @@ require('styles/MovieItem.scss');
 var MovieItem = React.createClass({
 
   render: function () {
-  	var url = 'http://www.imdb.com/title/'+this.props.imdbId;
+    let { ids, title, year } = this.props;
+  	let relatedURL = '/related?id=' + ids.trakt;
     return (
         <li className="MovieItem">
-            <div className="title">{this.props.title}</div>
-            <div className="year">{this.props.year}</div>
-            <div className="imdb-link"><a href={url} target="_blank">IMDB</a></div>
+            <div className="title">{title}</div>
+            <div className="year">{year}</div>
+            {ids.imdb ? <div className="imdb-link"><a href={'http://www.imdb.com/title/'+ids.imdb} target="_blank">IMDB</a></div> : '' }
+            <div className="related-movies"><a href={relatedURL}>Show related movies</a></div>
         </li>
       );
   }

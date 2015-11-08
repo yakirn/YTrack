@@ -1,6 +1,7 @@
 'use strict';
 
 import React from 'react';
+import ReactDOM from 'react-dom';
 var Actions = require('actions/SearchActionCreators');
 // var searchStore = require('stores/SearchStore');
 
@@ -10,8 +11,8 @@ var Search = React.createClass({
 
 	handleSubmit (e) {
 		e.preventDefault();
-	    var query = React.findDOMNode(this.refs.query).value.trim();
-	    var year = React.findDOMNode(this.refs.year).value.trim();
+	    var query = ReactDOM.findDOMNode(this.refs.query).value.trim();
+	    var year = ReactDOM.findDOMNode(this.refs.year).value.trim();
 	    if (!query) {
 	      return;
 	    }

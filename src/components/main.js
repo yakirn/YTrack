@@ -7,7 +7,7 @@ var Router = require('react-router');
 var Route = Router.Route;
 var DefaultRoute = Router.DefaultRoute;
 
-import Atest from './Atest';
+import Related from './Related';
 import Index from './Index';
 
 var content = document.getElementById('content');
@@ -15,7 +15,7 @@ var content = document.getElementById('content');
 var Routes = (
   <Route handler={YtrackApp}>
     <DefaultRoute handler={Index}/>
-    <Route name="/atest" handler={Atest}/>
+    <Route name="/related" handler={Related}/>
   </Route>
 );
 

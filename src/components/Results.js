@@ -11,7 +11,6 @@ export class Results extends React.Component {
 constructor (props) {
     super(props);
     this.state = {results: searchStore.results};
-    this.onStoreChange = this.onStoreChange.bind(this);
   }
  componentDidMount() {
      this.unsubscribeCountChange = searchStore.listen(this.onStoreChange);
@@ -19,7 +18,7 @@ constructor (props) {
   componentWillUnmount() {
     this.unsubscribeCountChange();
   }
-  onStoreChange (searchResults){
+  onStoreChange = (searchResults) => {
     this.setState({results: searchResults});
   }
   render () {
@@ -30,7 +29,7 @@ constructor (props) {
           { this.state.results.map(function(result){
           		switch (result.type){
           			case 'movie':
-						return <MovieItem title={result.movie.title} year={result.movie.year} imdbId={result.movie.ids.imdb}/>;
+						      return <MovieItem key={result.movie.ids.trakt} title={result.movie.title} year={result.movie.year} ids={result.movie.ids}/>;
           			break;
           		}
                             
