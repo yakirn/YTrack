@@ -15,7 +15,7 @@ var content = document.getElementById('content');
 var Routes = (
   <Route handler={YtrackApp}>
     <DefaultRoute handler={Index}/>
-    <Route name="/related" handler={Related}/>
+    <Route name="related/:id" handler={Related}/>
   </Route>
 );
 

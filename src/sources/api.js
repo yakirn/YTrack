@@ -57,4 +57,8 @@ export default class Api {
 	static search (data){
 		return $.ajax(buildApiRequest("search", data));
 	}
+
+	static related(movieId) {
+		return $.ajax(buildApiRequest("movies/" + movieId + "/related"));
+	}
 }

@@ -14,11 +14,6 @@ var Login  = React.createClass({
   mixins: [ Router.State ],
 
 	getInitialState () {
-		  // super(props);
-    	// this.render = this.render.bind(this);
-      // this.componentDidMount = this.componentDidMount.bind(this);
-      // this.componentWillUnmount = this.componentWillUnmount.bind(this);
-      // this.onUserChange = this.onUserChange.bind(this);
       return { user: userStore.user };
   	},
 
