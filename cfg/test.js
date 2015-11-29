@@ -14,19 +14,19 @@ module.exports = {
       },
       {
         test: /\.(js|jsx)$/,
-        loader: 'babel-loader',
+        loader: 'babel-loader?stage=0',
         include: [
           path.join(__dirname, '/../src'),
           path.join(__dirname, '/../test')
         ]
-      },
-      {
-        test: /\.(js|jsx)$/,
-        loader: 'babel-loader',
-        include: [
-          path.join(__dirname, '/../src')
-        ],
-        loader: 'isparta'
+      // },
+      // {
+      //   test: /\.(js|jsx)$/,
+      //   loader: 'babel-loader',
+      //   include: [
+      //     path.join(__dirname, '/../src')
+      //   ],
+      //   loader: 'isparta'
       }
     ]
   },

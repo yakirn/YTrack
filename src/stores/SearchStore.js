@@ -2,22 +2,22 @@
 
 var Reflux = require('reflux');
 var Actions = require('actions/SearchActionCreators');
-import Api from 'sources/api';
-
+import SearchSource from 'sources/SearchSource';
 
 var SearchStore = Reflux.createStore({
   listenables: Actions,
   results: [],
 
-  search (searchValues) {
+  async search (searchValues) {
   	searchValues.type = 'movie';
-  	Api.search(searchValues)
-	.done(
-  		results => {
-			this.results = results;
-			this.trigger(this.results);
-  		}
-	);
+    try {
+      let results = await SearchSource.search(searchValues);
+      this.results = results;
+      this.trigger(this.results);
+    } catch(err) {
+      console.log(err);
+    }
+  	
   }
 });
 

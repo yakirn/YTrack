@@ -1,5 +1,5 @@
 'use strict';
-
+require("babel-polyfill");
 var YtrackApp = require('./YtrackApp');
 import React from 'react';
 import ReactDOM from 'react-dom';

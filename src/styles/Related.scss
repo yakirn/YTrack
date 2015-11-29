@@ -1,3 +1,10 @@
-.Atest {
-  border: 1px dashed #f00;
+.Related {
+	.relatedList{
+		width: 90%;
+		display: flex;
+		
+		.movieItem{
+			list-style: none;
+		}
+	}
 }

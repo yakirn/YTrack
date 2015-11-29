@@ -1,3 +1,6 @@
 .Results {
-  border: 1px dashed #f00;
+	.ResultsList{
+		display: flex;
+		flex-flow: row wrap;
+	}
 }

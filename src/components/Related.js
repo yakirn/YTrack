@@ -1,9 +1,13 @@
 'use strict';
 
+import _ from 'lodash'
 import React from 'react';
 import Actions from 'actions/RelatedActionCreators';
-import Store from 'stores/RelatedStore';
+import RelatedStore from 'stores/RelatedStore';
 import MovieItem from 'components/MovieItem'
+
+var searchStore = require('stores/SearchStore');
+
 
 require('styles/Related.scss');
 
@@ -11,26 +15,30 @@ export default class Related extends React.Component {
 
 	constructor (props) {
     	super(props);
-    	// let isStoreValid = (Store.relatedMovies && Store.relatedMovies.to == this.props.params.id);
     	this.state = {
-    		loading: true, //!isStoreValid,
-    		relatedMovies: {} //isStoreValid ? Store.relatedMovies : {}
+    		loading: true,
+    		relatedMovies: {},
+        to: _.filter(searchStore.results, 'movie.ids.trakt', Number(this.props.params.id))[0]
     	};
 	}
 
 	componentDidMount() {
-     this.unsubscribe = Store.listen(this.onStoreChange);
-     Actions.findRelated(this.props.params.id);
+    let id = this.props.params.id
+     this.unsubscribe = RelatedStore.listen(this.updateRelated);
+     if(RelatedStore.relatedMovies.to == id)
+        this.updateRelated(RelatedStore.relatedMovies)
+    else 
+      Actions.findRelated(id);
   }
   componentWillUnmount() {
     this.unsubscribe();
   }
-  onStoreChange = (relatedMovies) => {
+  updateRelated = (relatedMovies) => {
     this.setState({loading: false, relatedMovies: relatedMovies});
   }
 
   render () {
-  	let {loading, relatedMovies} = this.state;
+  	let {loading, relatedMovies, to} = this.state;
   	if(loading)
   		return (
   			<div className="loading">loading...</div>
@@ -38,7 +46,8 @@ export default class Related extends React.Component {
 
     return (
         <div className="Related">
-          <ul className="related-list">
+          <MovieItem title={to.movie.title} year={to.movie.year} ids={to.movie.ids}/>
+          <ul className="RelatedList">
           { relatedMovies.movies.map((relatedMovie) => {
 		      	return <MovieItem key={relatedMovie.ids.trakt} title={relatedMovie.title} year={relatedMovie.year} ids={relatedMovie.ids}/>;
                             

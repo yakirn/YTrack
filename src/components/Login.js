@@ -1,6 +1,6 @@
 'use strict';
 
-import Api from 'sources/api';
+import LoginSource from 'sources/LoginSource';
 import React from 'react';
 var Router = require('react-router');
 
@@ -22,27 +22,27 @@ var Login  = React.createClass({
             user: user
         });
     },
-    componentDidMount () {
+    async componentDidMount () {
       this.unsubscribe = userStore.listen(this.onUserChange);
       let code = this.getQuery().code;
       if(code) { 
-        Api.getToken(code)
-        .then( tokenData => {
+        try {
+          let tokenData = await LoginSource.getToken(code);
           tokenData = JSON.parse(tokenData);
           UserActions.token(tokenData);
-          return Api.getProfileData(tokenData.access_token);
-        })
-        .done( profileData => {
-            UserActions.login(profileData);
-            window.location.replace('/');
-          });
+          const profileData = await LoginSource.getProfileData(tokenData.access_token);
+          UserActions.login(profileData);
+          window.location.replace('/');
+        } catch(err){
+          console.log(err);
+        }
       }
     },
     componentWillUnmount () {
       this.unsubscribe();
     },
     onLoginClick () {
-      	Api.authorize();
+      	LoginSource.authorize();
     },
     renderGreeting () {
       return (<span>Welcom {this.state.user.profile.name}</span>);
